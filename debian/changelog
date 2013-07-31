@@ -1,3 +1,9 @@
+libxcb (1.6-1+squeeze1) oldstable-security; urgency=low
+
+  * CVE-2013-2064
+
+ -- Moritz Muehlenhoff <jmm@debian.org>  Thu, 16 May 2013 20:01:58 +0000
+
 libxcb (1.6-1) unstable; urgency=low
 
   * New upstream release.
