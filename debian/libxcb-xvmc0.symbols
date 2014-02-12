@@ -6,18 +6,21 @@ libxcb-xvmc.so.0 libxcb-xvmc0 #MINVER#
  xcb_xvmc_create_context_priv_data_end@Base 0
  xcb_xvmc_create_context_priv_data_length@Base 0
  xcb_xvmc_create_context_reply@Base 0
+ xcb_xvmc_create_context_sizeof@Base 1.8
  xcb_xvmc_create_context_unchecked@Base 0
  xcb_xvmc_create_subpicture@Base 0
  xcb_xvmc_create_subpicture_priv_data@Base 0
  xcb_xvmc_create_subpicture_priv_data_end@Base 0
  xcb_xvmc_create_subpicture_priv_data_length@Base 0
  xcb_xvmc_create_subpicture_reply@Base 0
+ xcb_xvmc_create_subpicture_sizeof@Base 1.8
  xcb_xvmc_create_subpicture_unchecked@Base 0
  xcb_xvmc_create_surface@Base 0
  xcb_xvmc_create_surface_priv_data@Base 0
  xcb_xvmc_create_surface_priv_data_end@Base 0
  xcb_xvmc_create_surface_priv_data_length@Base 0
  xcb_xvmc_create_surface_reply@Base 0
+ xcb_xvmc_create_surface_sizeof@Base 1.8
  xcb_xvmc_create_surface_unchecked@Base 0
  xcb_xvmc_destroy_context@Base 0
  xcb_xvmc_destroy_context_checked@Base 0
@@ -28,12 +31,14 @@ libxcb-xvmc.so.0 libxcb-xvmc0 #MINVER#
  xcb_xvmc_id@Base 0
  xcb_xvmc_list_subpicture_types@Base 0
  xcb_xvmc_list_subpicture_types_reply@Base 0
+ xcb_xvmc_list_subpicture_types_sizeof@Base 1.8
  xcb_xvmc_list_subpicture_types_types@Base 0
  xcb_xvmc_list_subpicture_types_types_iterator@Base 0
  xcb_xvmc_list_subpicture_types_types_length@Base 0
  xcb_xvmc_list_subpicture_types_unchecked@Base 0
  xcb_xvmc_list_surface_types@Base 0
  xcb_xvmc_list_surface_types_reply@Base 0
+ xcb_xvmc_list_surface_types_sizeof@Base 1.8
  xcb_xvmc_list_surface_types_surfaces@Base 0
  xcb_xvmc_list_surface_types_surfaces_iterator@Base 0
  xcb_xvmc_list_surface_types_surfaces_length@Base 0

@@ -7,17 +7,20 @@ libxcb-xv.so.0 libxcb-xv0 #MINVER#
  xcb_xv_adaptor_info_name_end@Base 0
  xcb_xv_adaptor_info_name_length@Base 0
  xcb_xv_adaptor_info_next@Base 0
+ xcb_xv_adaptor_info_sizeof@Base 1.8
  xcb_xv_attribute_info_end@Base 0
  xcb_xv_attribute_info_name@Base 0
  xcb_xv_attribute_info_name_end@Base 0
  xcb_xv_attribute_info_name_length@Base 0
  xcb_xv_attribute_info_next@Base 0
+ xcb_xv_attribute_info_sizeof@Base 1.8
  xcb_xv_encoding_end@Base 0
  xcb_xv_encoding_info_end@Base 0
  xcb_xv_encoding_info_name@Base 0
  xcb_xv_encoding_info_name_end@Base 0
  xcb_xv_encoding_info_name_length@Base 0
  xcb_xv_encoding_info_next@Base 0
+ xcb_xv_encoding_info_sizeof@Base 1.8
  xcb_xv_encoding_next@Base 0
  xcb_xv_format_end@Base 0
  xcb_xv_format_next@Base 0
@@ -45,16 +48,19 @@ libxcb-xv.so.0 libxcb-xv0 #MINVER#
  xcb_xv_image_pitches@Base 0
  xcb_xv_image_pitches_end@Base 0
  xcb_xv_image_pitches_length@Base 0
+ xcb_xv_image_sizeof@Base 1.8
  xcb_xv_list_image_formats@Base 0
  xcb_xv_list_image_formats_format@Base 1.2
  xcb_xv_list_image_formats_format_iterator@Base 0
  xcb_xv_list_image_formats_format_length@Base 0
  xcb_xv_list_image_formats_reply@Base 0
+ xcb_xv_list_image_formats_sizeof@Base 1.8
  xcb_xv_list_image_formats_unchecked@Base 0
  xcb_xv_port_end@Base 0
  xcb_xv_port_next@Base 0
  xcb_xv_put_image@Base 0
  xcb_xv_put_image_checked@Base 0
+ xcb_xv_put_image_sizeof@Base 1.8
  xcb_xv_put_still@Base 0
  xcb_xv_put_still_checked@Base 0
  xcb_xv_put_video@Base 0
@@ -63,6 +69,7 @@ libxcb-xv.so.0 libxcb-xv0 #MINVER#
  xcb_xv_query_adaptors_info_iterator@Base 0
  xcb_xv_query_adaptors_info_length@Base 0
  xcb_xv_query_adaptors_reply@Base 0
+ xcb_xv_query_adaptors_sizeof@Base 1.8
  xcb_xv_query_adaptors_unchecked@Base 0
  xcb_xv_query_best_size@Base 0
  xcb_xv_query_best_size_reply@Base 0
@@ -71,6 +78,7 @@ libxcb-xv.so.0 libxcb-xv0 #MINVER#
  xcb_xv_query_encodings_info_iterator@Base 0
  xcb_xv_query_encodings_info_length@Base 0
  xcb_xv_query_encodings_reply@Base 0
+ xcb_xv_query_encodings_sizeof@Base 1.8
  xcb_xv_query_encodings_unchecked@Base 0
  xcb_xv_query_extension@Base 0
  xcb_xv_query_extension_reply@Base 0
@@ -83,11 +91,13 @@ libxcb-xv.so.0 libxcb-xv0 #MINVER#
  xcb_xv_query_image_attributes_pitches_end@Base 0
  xcb_xv_query_image_attributes_pitches_length@Base 0
  xcb_xv_query_image_attributes_reply@Base 0
+ xcb_xv_query_image_attributes_sizeof@Base 1.8
  xcb_xv_query_image_attributes_unchecked@Base 0
  xcb_xv_query_port_attributes@Base 0
  xcb_xv_query_port_attributes_attributes_iterator@Base 0
  xcb_xv_query_port_attributes_attributes_length@Base 0
  xcb_xv_query_port_attributes_reply@Base 0
+ xcb_xv_query_port_attributes_sizeof@Base 1.8
  xcb_xv_query_port_attributes_unchecked@Base 0
  xcb_xv_rational_end@Base 0
  xcb_xv_rational_next@Base 0

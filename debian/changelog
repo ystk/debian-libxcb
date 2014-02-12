@@ -1,3 +1,85 @@
+libxcb (1.8.1-2+deb7u1) wheezy-security; urgency=high
+
+  * integer overflow in read_packet() [CVE-2013-2064]
+
+ -- Julien Cristau <jcristau@debian.org>  Wed, 15 May 2013 20:20:13 +0200
+
+libxcb (1.8.1-2) unstable; urgency=low
+
+  * Cherry-pick from upstream 1.9:
+    Fix a multi-thread deadlock.  This fixes a deadlock which was seen
+    in-the-wild with wine.  It could happen that two threads tried to read
+    from the socket at the same time and one of the thread got stuck inside of
+    poll()/select().  The fix works by making sure that the writing thread
+    doesn't steal the reading thread's reply.  Closes: #689269.
+
+ -- Julien Cristau <jcristau@debian.org>  Mon, 15 Oct 2012 21:13:33 +0200
+
+libxcb (1.8.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Cyril Brulebois <kibi@debian.org>  Sun, 11 Mar 2012 10:15:32 +0100
+
+libxcb (1.8-2) unstable; urgency=high
+
+  * Stop passing MSG_WAITALL to recv() (closes: #659104)
+
+ -- Julien Cristau <jcristau@debian.org>  Thu, 09 Feb 2012 23:58:07 +0100
+
+libxcb (1.8-1) unstable; urgency=low
+
+  [ Steve Langasek ]
+  * Use debhelper's dpkg-buildflags support instead of hard-coding CFLAGS,
+    picking up hardening flags and improving cross-build support.
+
+  [ Timo Aaltonen ]
+  * New upstream release.
+  * control: Bump the xcb-proto build-dep.
+
+  [ Arnaud Fontaine ]
+  * Bump Standards-Version to 3.9.2. No changes needed.
+  * Memory leak reported by valgrind was fixed in 1.8. Closes: #609478.
+  * Update debian/*.symbols with symbols added in 1.8.
+  * Add libxcb-doc package with doxygen documentation and tutorial.
+    Closes: #512564.
+
+ -- Arnaud Fontaine <arnau@debian.org>  Wed, 25 Jan 2012 16:12:14 +0900
+
+libxcb (1.7-4) unstable; urgency=low
+
+  * Mark the -dev packages Multi-Arch: same, after thoroughly reviewing
+    that the package contents are consistent across amd64 and armel
+    architectures.
+
+ -- Steve Langasek <vorlon@debian.org>  Tue, 08 Nov 2011 17:44:48 -0800
+
+libxcb (1.7-3) unstable; urgency=low
+
+  [ Steve Langasek ]
+  * Build for multiarch.
+
+  [ Julien Cristau ]
+  * Remove some unnecessary parts from debian/rules.  As a bonus, this should
+    fix the build failure with DEB_BUILD_OPTIONS=nocheck (closes: #629691).
+
+ -- Julien Cristau <jcristau@debian.org>  Wed, 08 Jun 2011 23:21:10 +0200
+
+libxcb (1.7-2) unstable; urgency=low
+
+  * Revert source format change.
+  * Upload to unstable.
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 06 Feb 2011 22:09:25 +0100
+
+libxcb (1.7-1) experimental; urgency=low
+
+  * New upstream release
+  * Bump standard version
+  * Use 3.0 source format
+
+ -- Julien Danjou <acid@debian.org>  Sat, 23 Oct 2010 14:48:55 +0200
+
 libxcb (1.6-1) unstable; urgency=low
 
   * New upstream release.
@@ -253,4 +335,3 @@ fd.o-xcb (0.8-1) unstable; urgency=low
   * Initial Release.
 
  -- Jamey Sharp <sharpone@debian.org>  Thu, 18 Mar 2004 00:09:03 -0800
-

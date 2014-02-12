@@ -6,6 +6,7 @@ libxcb-shape.so.0 libxcb-shape0 #MINVER#
  xcb_shape_get_rectangles_rectangles_iterator@Base 0
  xcb_shape_get_rectangles_rectangles_length@Base 0
  xcb_shape_get_rectangles_reply@Base 0
+ xcb_shape_get_rectangles_sizeof@Base 1.8
  xcb_shape_get_rectangles_unchecked@Base 0
  xcb_shape_id@Base 0
  xcb_shape_input_selected@Base 0
@@ -27,5 +28,6 @@ libxcb-shape.so.0 libxcb-shape0 #MINVER#
  xcb_shape_query_version_unchecked@Base 0
  xcb_shape_rectangles@Base 0
  xcb_shape_rectangles_checked@Base 0
+ xcb_shape_rectangles_sizeof@Base 1.8
  xcb_shape_select_input@Base 0
  xcb_shape_select_input_checked@Base 0

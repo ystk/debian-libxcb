@@ -6,10 +6,10 @@ Uploaders: Josh Triplett <josh@freedesktop.org>, Julien Danjou <acid@debian.org>
 Build-Depends:
  libxau-dev (>= 1:1.0.5-2),
  libxdmcp-dev (>= 1:1.0.3-2),
- xcb-proto (>= 1.6),
+ xcb-proto (>= 1.7),
  xcb-proto (<< 2.0),
  libpthread-stubs0-dev (>= 0.1),
- debhelper (>= 7.0.50),
+ debhelper (>= 8.9.4~),
  pkg-config,
  xsltproc (>= 1.1.19),
  check (>= 0.9.4-2),
@@ -18,7 +18,11 @@ Build-Depends:
  automake,
  python,
  dctrl-tools
-Standards-Version: 3.8.4
+Build-Depends-Indep:
+# libxcb-doc
+ doxygen,
+ graphviz,
+Standards-Version: 3.9.2
 Homepage: http://xcb.freedesktop.org
 Vcs-Git: git://git.debian.org/git/collab-maint/libxcb
 Vcs-Browser: http://git.debian.org/?p=collab-maint/libxcb.git
@@ -28,6 +32,8 @@ Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Breaks: libxcb-xlib0
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding
  This package contains the library files needed to run software using libxcb,
  the X C Binding.
@@ -54,9 +60,11 @@ Description: X C Binding
 Package: libxcb1-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb1 (= ${binary:Version}), libpthread-stubs0-dev, libxau-dev (>= 1:1.0.0-1), libxdmcp-dev (>= 1:1.0.0-1)
 Conflicts: libxcb0-dev
 Replaces: libxcb0-dev
+Suggests: libxcb-doc
 Description: X C Binding, development files
  This package contains the header and library files needed to build software
  using libxcb, the X C Binding.
@@ -77,9 +85,31 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb1 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, debugging symbols
  This package contains the debugging symbols associated with libxcb, the X C
  Binding.  gdb will automatically use these symbols when debugging libxcb.
+ .
+ The XCB library provides an interface to the X Window System protocol,
+ designed to replace the Xlib interface.  XCB provides several advantages over
+ Xlib:
+ .
+  * Size: small library and lower memory footprint
+  * Latency hiding: batch several requests and wait for the replies later
+  * Direct protocol access: one-to-one mapping between interface and protocol
+  * Thread support: access XCB from multiple threads, with no explicit locking
+  * Easy creation of new extensions: automatically generates interface from
+    machine-parsable protocol descriptions
+
+Package: libxcb-doc
+Section: doc
+Priority: optional
+Multi-Arch: foreign
+Architecture: all
+Depends: ${misc:Depends}
+Description: X C Binding, development documentation
+ This package contains the development documentation for libxcb, the X C
+ Binding.
  .
  The XCB library provides an interface to the X Window System protocol,
  designed to replace the Xlib interface.  XCB provides several advantages over
@@ -96,6 +126,8 @@ Package: libxcb-composite0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, composite extension
  This package contains the library files needed to run software using
  libxcb-composite, the composite extension for the X C Binding.
@@ -114,6 +146,7 @@ Description: X C Binding, composite extension
 Package: libxcb-composite0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-composite0 (= ${binary:Version}), libxcb1-dev, libxcb-xfixes0-dev
 Description: X C Binding, composite extension, development files
  This package contains the header and library files needed to build software
@@ -135,6 +168,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-composite0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, composite extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-composite, the composite extension for the X C Binding.  gdb will
@@ -155,6 +189,8 @@ Package: libxcb-damage0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, damage extension
  This package contains the library files needed to run software using
  libxcb-damage, the damage extension for the X C Binding.
@@ -173,6 +209,7 @@ Description: X C Binding, damage extension
 Package: libxcb-damage0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-damage0 (= ${binary:Version}), libxcb1-dev, libxcb-xfixes0-dev
 Description: X C Binding, damage extension, development files
  This package contains the header and library files needed to build software
@@ -194,6 +231,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-damage0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, damage extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-damage, the damage extension for the X C Binding.  gdb will
@@ -214,6 +252,8 @@ Package: libxcb-dpms0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, dpms extension
  This package contains the library files needed to run software using
  libxcb-dpms, the dpms extension for the X C Binding.
@@ -232,6 +272,7 @@ Description: X C Binding, dpms extension
 Package: libxcb-dpms0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-dpms0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, dpms extension, development files
  This package contains the header and library files needed to build software
@@ -253,6 +294,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-dpms0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, dpms extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-dpms, the dpms extension for the X C Binding.  gdb will
@@ -273,6 +315,8 @@ Package: libxcb-glx0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, glx extension
  This package contains the library files needed to run software using
  libxcb-glx, the glx extension for the X C Binding.
@@ -291,6 +335,7 @@ Description: X C Binding, glx extension
 Package: libxcb-glx0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-glx0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, glx extension, development files
  This package contains the header and library files needed to build software
@@ -312,6 +357,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-glx0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, glx extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-glx, the glx extension for the X C Binding.  gdb will
@@ -332,6 +378,8 @@ Package: libxcb-randr0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, randr extension
  This package contains the library files needed to run software using
  libxcb-randr, the randr extension for the X C Binding.
@@ -350,6 +398,7 @@ Description: X C Binding, randr extension
 Package: libxcb-randr0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-randr0 (= ${binary:Version}), libxcb1-dev, libxcb-render0-dev
 Description: X C Binding, randr extension, development files
  This package contains the header and library files needed to build software
@@ -371,6 +420,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-randr0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, randr extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-randr, the randr extension for the X C Binding.  gdb will
@@ -391,6 +441,8 @@ Package: libxcb-record0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, record extension
  This package contains the library files needed to run software using
  libxcb-record, the record extension for the X C Binding.
@@ -409,6 +461,7 @@ Description: X C Binding, record extension
 Package: libxcb-record0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-record0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, record extension, development files
  This package contains the header and library files needed to build software
@@ -430,6 +483,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-record0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, record extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-record, the record extension for the X C Binding.  gdb will
@@ -450,6 +504,8 @@ Package: libxcb-render0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, render extension
  This package contains the library files needed to run software using
  libxcb-render, the render extension for the X C Binding.
@@ -468,6 +524,7 @@ Description: X C Binding, render extension
 Package: libxcb-render0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-render0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, render extension, development files
  This package contains the header and library files needed to build software
@@ -489,6 +546,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-render0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, render extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-render, the render extension for the X C Binding.  gdb will
@@ -509,6 +567,8 @@ Package: libxcb-res0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, res extension
  This package contains the library files needed to run software using
  libxcb-res, the res extension for the X C Binding.
@@ -527,6 +587,7 @@ Description: X C Binding, res extension
 Package: libxcb-res0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-res0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, res extension, development files
  This package contains the header and library files needed to build software
@@ -548,6 +609,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-res0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, res extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-res, the res extension for the X C Binding.  gdb will
@@ -568,6 +630,8 @@ Package: libxcb-screensaver0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, screensaver extension
  This package contains the library files needed to run software using
  libxcb-screensaver, the screensaver extension for the X C Binding.
@@ -586,6 +650,7 @@ Description: X C Binding, screensaver extension
 Package: libxcb-screensaver0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-screensaver0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, screensaver extension, development files
  This package contains the header and library files needed to build software
@@ -607,6 +672,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-screensaver0 (= ${binary:Version})
+Multi-Arch: same
 Description: X C Binding, screensaver extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-screensaver, the screensaver extension for the X C Binding.  gdb will
@@ -627,6 +693,8 @@ Package: libxcb-shape0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
 Description: X C Binding, shape extension
  This package contains the library files needed to run software using
  libxcb-shape, the shape extension for the X C Binding.
@@ -645,6 +713,7 @@ Description: X C Binding, shape extension
 Package: libxcb-shape0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-shape0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, shape extension, development files
  This package contains the header and library files needed to build software
@@ -666,6 +735,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-shape0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, shape extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-shape, the shape extension for the X C Binding.  gdb will
@@ -686,6 +756,8 @@ Package: libxcb-shm0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, shm extension
  This package contains the library files needed to run software using
  libxcb-shm, the shm extension for the X C Binding.
@@ -704,6 +776,7 @@ Description: X C Binding, shm extension
 Package: libxcb-shm0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-shm0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, shm extension, development files
  This package contains the header and library files needed to build software
@@ -725,6 +798,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-shm0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, shm extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-shm, the shm extension for the X C Binding.  gdb will
@@ -745,6 +819,8 @@ Package: libxcb-sync0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, sync extension
  This package contains the library files needed to run software using
  libxcb-sync, the sync extension for the X C Binding.
@@ -763,6 +839,7 @@ Description: X C Binding, sync extension
 Package: libxcb-sync0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-sync0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, sync extension, development files
  This package contains the header and library files needed to build software
@@ -784,6 +861,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-sync0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, sync extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-sync, the sync extension for the X C Binding.  gdb will
@@ -804,6 +882,8 @@ Package: libxcb-xevie0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xevie extension
  This package contains the library files needed to run software using
  libxcb-xevie, the xevie extension for the X C Binding.
@@ -822,6 +902,7 @@ Description: X C Binding, xevie extension
 Package: libxcb-xevie0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xevie0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, xevie extension, development files
  This package contains the header and library files needed to build software
@@ -843,6 +924,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xevie0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xevie extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xevie, the xevie extension for the X C Binding.  gdb will
@@ -863,6 +945,8 @@ Package: libxcb-xf86dri0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xf86dri extension
  This package contains the library files needed to run software using
  libxcb-xf86dri, the xf86dri extension for the X C Binding.
@@ -881,6 +965,7 @@ Description: X C Binding, xf86dri extension
 Package: libxcb-xf86dri0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xf86dri0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, xf86dri extension, development files
  This package contains the header and library files needed to build software
@@ -902,6 +987,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xf86dri0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xf86dri extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xf86dri, the xf86dri extension for the X C Binding.  gdb will
@@ -922,6 +1008,8 @@ Package: libxcb-xfixes0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xfixes extension
  This package contains the library files needed to run software using
  libxcb-xfixes, the xfixes extension for the X C Binding.
@@ -940,6 +1028,7 @@ Description: X C Binding, xfixes extension
 Package: libxcb-xfixes0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xfixes0 (= ${binary:Version}), libxcb1-dev, libxcb-render0-dev, libxcb-shape0-dev
 Description: X C Binding, xfixes extension, development files
  This package contains the header and library files needed to build software
@@ -961,6 +1050,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xfixes0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xfixes extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xfixes, the xfixes extension for the X C Binding.  gdb will
@@ -981,6 +1071,8 @@ Package: libxcb-xinerama0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xinerama extension
  This package contains the library files needed to run software using
  libxcb-xinerama, the xinerama extension for the X C Binding.
@@ -999,6 +1091,7 @@ Description: X C Binding, xinerama extension
 Package: libxcb-xinerama0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xinerama0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, xinerama extension, development files
  This package contains the header and library files needed to build software
@@ -1020,6 +1113,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xinerama0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xinerama extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xinerama, the xinerama extension for the X C Binding.  gdb will
@@ -1040,6 +1134,8 @@ Package: libxcb-xprint0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xprint extension
  This package contains the library files needed to run software using
  libxcb-xprint, the xprint extension for the X C Binding.
@@ -1058,6 +1154,7 @@ Description: X C Binding, xprint extension
 Package: libxcb-xprint0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xprint0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, xprint extension, development files
  This package contains the header and library files needed to build software
@@ -1079,6 +1176,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xprint0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xprint extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xprint, the xprint extension for the X C Binding.  gdb will
@@ -1099,6 +1197,8 @@ Package: libxcb-xtest0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xtest extension
  This package contains the library files needed to run software using
  libxcb-xtest, the xtest extension for the X C Binding.
@@ -1117,6 +1217,7 @@ Description: X C Binding, xtest extension
 Package: libxcb-xtest0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xtest0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, xtest extension, development files
  This package contains the header and library files needed to build software
@@ -1138,6 +1239,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xtest0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xtest extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xtest, the xtest extension for the X C Binding.  gdb will
@@ -1158,6 +1260,8 @@ Package: libxcb-xv0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xv extension
  This package contains the library files needed to run software using
  libxcb-xv, the xv extension for the X C Binding.
@@ -1176,6 +1280,7 @@ Description: X C Binding, xv extension
 Package: libxcb-xv0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xv0 (= ${binary:Version}), libxcb1-dev, libxcb-shm0-dev
 Description: X C Binding, xv extension, development files
  This package contains the header and library files needed to build software
@@ -1197,6 +1302,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xv0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xv extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xv, the xv extension for the X C Binding.  gdb will
@@ -1217,6 +1323,8 @@ Package: libxcb-xvmc0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, xvmc extension
  This package contains the library files needed to run software using
  libxcb-xvmc, the xvmc extension for the X C Binding.
@@ -1235,6 +1343,7 @@ Description: X C Binding, xvmc extension
 Package: libxcb-xvmc0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-xvmc0 (= ${binary:Version}), libxcb1-dev, libxcb-xv0-dev
 Description: X C Binding, xvmc extension, development files
  This package contains the header and library files needed to build software
@@ -1256,6 +1365,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-xvmc0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, xvmc extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-xvmc, the xvmc extension for the X C Binding.  gdb will
@@ -1276,6 +1386,8 @@ Package: libxcb-dri2-0
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same 
 Description: X C Binding, dri2 extension
  This package contains the library files needed to run software using
  libxcb-dri2, the dri2 extension for the X C Binding.
@@ -1294,6 +1406,7 @@ Description: X C Binding, dri2 extension
 Package: libxcb-dri2-0-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}, libxcb-dri2-0 (= ${binary:Version}), libxcb1-dev
 Description: X C Binding, dri2 extension, development files
  This package contains the header and library files needed to build software
@@ -1315,6 +1428,7 @@ Priority: extra
 Section: debug
 Architecture: any
 Depends: ${misc:Depends}, libxcb-dri2-0 (= ${binary:Version})
+Multi-Arch: same 
 Description: X C Binding, dri2 extension, debugging symbols
  This package contains the debugging symbols associated with
  libxcb-dri2, the dri2 extension for the X C Binding.  gdb will
