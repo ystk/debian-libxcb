@@ -1,8 +1,81 @@
-libxcb (1.8.1-2+deb7u1) wheezy-security; urgency=high
+libxcb (1.10-3) unstable; urgency=medium
 
-  * integer overflow in read_packet() [CVE-2013-2064]
+  * Add missing dependencies to libxcb-present-dev.  Thanks, Michel Dänzer!
 
- -- Julien Cristau <jcristau@debian.org>  Wed, 15 May 2013 20:20:13 +0200
+ -- Julien Cristau <jcristau@debian.org>  Fri, 06 Jun 2014 17:08:36 +0200
+
+libxcb (1.10-2) unstable; urgency=medium
+
+  * Add conflicts/replaces for sync dev package name change (closes: #733590)
+  * Pack generic events with 64bit types (as in the present extension) so the
+    fake full_sequence field doesn't introduce unexpected padding (pulled from
+    upstream git).
+
+ -- Julien Cristau <jcristau@debian.org>  Sat, 04 Jan 2014 14:20:09 +0100
+
+libxcb (1.10-1) unstable; urgency=low
+
+  * New upstream release.
+
+  [ Michele Cane ]
+  * Bump dependency to xcb-proto and python-xcbgen >= 1.10 (closes: #662113).
+
+  [ Julien Cristau ]
+  * Re-enable kfreebsd-amd64 tests, #712196 was fixed in libc.
+  * Add new packages for the XKEYBOARD (closes: #718701), DRI3 and Present
+    extensions.
+  * Rename libxcb-sync0 for SONAME bump.  The -dev package is now
+    libxcb-sync-dev (but the old name is still provided as a virtual package).
+  * Add randr 1.4 symbols.
+  * Add xres 1.2 symbols.
+  * Add xfixes 5 symbols.
+  * Add mit-shm 1.2 symbols.
+  * Bump libxcb1 symbols and shlibs for fd passing and event queues APIs.
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 22 Dec 2013 18:41:14 +0100
+
+libxcb (1.9.1-3.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix "FTBFS when $HOME does not exist: /install-sh: No such file or
+    directory":
+    apply upstream fix to configure.ac, taken from
+    http://cgit.freedesktop.org/xcb/libxcb/commit/?id=50fb3a6312dd0b6b613fc886ffd6827952d1e286
+    (Closes: #722688)
+  * debian/control: remove Cyril Brulebois from Uploaders on his request.
+    (Cf. #722688)
+
+ -- gregor herrmann <gregoa@debian.org>  Sun, 24 Nov 2013 02:51:08 +0100
+
+libxcb (1.9.1-3) unstable; urgency=low
+
+  * Revert #711599 workaround now that check is fixed.
+  * Don't run make check on kfreebsd-amd64 because of #712196.
+  * Remove unused DEB_*_GNU_TYPE variables from d/rules.
+  * Turns out check.pc's not quite right yet (#712140).  Work around that, too.
+
+ -- Julien Cristau <jcristau@debian.org>  Sat, 15 Jun 2013 12:52:40 +0200
+
+libxcb (1.9.1-2) unstable; urgency=low
+
+  * Add DRI2 1.4 symbols (added in xcb-proto 1.8).  Fixes FTBFS.
+  * Bump shlibs.
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 09 Jun 2013 22:51:39 +0200
+
+libxcb (1.9.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Work around #711599 by adding -lm -lrt explicitly to the tests linker
+    flags.
+  * Remove all-local rule from tests/Makefile.am to fix build with new
+    automake (closes: #710344).  Thanks, Marc Deslauriers!
+  * Delete test-driver on clean.  Apparently new automake gives us yet more
+    cruft in the source tree.
+  * libxcb1 Breaks alsa-utils (<< 1.0.24.2-5) to avoid leaving alsamixer
+    broken during partial upgrades (closes: #657538).
+
+ -- Julien Cristau <jcristau@debian.org>  Sun, 09 Jun 2013 20:52:53 +0200
 
 libxcb (1.8.1-2) unstable; urgency=low
 

@@ -1,4 +1,6 @@
 libxcb-xfixes.so.0 libxcb-xfixes0 #MINVER#
+ xcb_xfixes_barrier_end@Base 1.10
+ xcb_xfixes_barrier_next@Base 1.10
  xcb_xfixes_change_cursor@Base 0
  xcb_xfixes_change_cursor_by_name@Base 0
  xcb_xfixes_change_cursor_by_name_checked@Base 0
@@ -8,6 +10,9 @@ libxcb-xfixes.so.0 libxcb-xfixes0 #MINVER#
  xcb_xfixes_change_save_set_checked@Base 0
  xcb_xfixes_copy_region@Base 0
  xcb_xfixes_copy_region_checked@Base 0
+ xcb_xfixes_create_pointer_barrier@Base 1.10
+ xcb_xfixes_create_pointer_barrier_checked@Base 1.10
+ xcb_xfixes_create_pointer_barrier_sizeof@Base 1.10
  xcb_xfixes_create_region@Base 0
  xcb_xfixes_create_region_checked@Base 0
  xcb_xfixes_create_region_from_bitmap@Base 0
@@ -19,6 +24,8 @@ libxcb-xfixes.so.0 libxcb-xfixes0 #MINVER#
  xcb_xfixes_create_region_from_window@Base 0
  xcb_xfixes_create_region_from_window_checked@Base 0
  xcb_xfixes_create_region_sizeof@Base 1.8
+ xcb_xfixes_delete_pointer_barrier@Base 1.10
+ xcb_xfixes_delete_pointer_barrier_checked@Base 1.10
  xcb_xfixes_destroy_region@Base 0
  xcb_xfixes_destroy_region_checked@Base 0
  xcb_xfixes_expand_region@Base 0
